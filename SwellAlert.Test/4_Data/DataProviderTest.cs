@@ -11,7 +11,7 @@ namespace SwellAlert.Test.Data
         public void Test1()
         {
             // Arrange
-            IDataProvider dataProvider = new DataProvider();
+            IDataProvider dataProvider = new MswDataProvider();
 
             // Act
             SwellData swellData = dataProvider.GetSwellData("");
