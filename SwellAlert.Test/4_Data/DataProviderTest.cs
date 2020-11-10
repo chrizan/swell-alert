@@ -7,14 +7,16 @@ namespace SwellAlert.Test.Data
 {
     public class DataProviderTest
     {
+        private const string MswVieuxBoucauForecast = @"TestFiles\MswVieuxBoucau.html";
+
         [Fact]
         public void Test1()
         {
             // Arrange
-            IDataProvider dataProvider = new MswDataProvider();
+            IDataProvider mswDataProvider = new MswDataProvider();
 
             // Act
-            SwellData swellData = dataProvider.GetSwellData("");
+            SwellData swellData = mswDataProvider.GetSwellDataFromFile(MswVieuxBoucauForecast);
 
             // Assert 
             swellData.Should().NotBeNull();
