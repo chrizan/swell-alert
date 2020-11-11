@@ -37,7 +37,7 @@ namespace SwellAlert.Data
         {
             DailySwellData dailySwellData = new DailySwellData
             {
-                Day = day.ToString()
+                Day = day
             };
 
             var dayNodes = htmlDoc.DocumentNode.Descendants("tr").Where(tr => tr.GetAttributeValue("data-forecast-day", "-1") == day.ToString());
