@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace SwellAlert.Models
 {
     [Serializable]
-    public sealed class SwellData : Dictionary<int, DailySwellData>
+    public sealed class SwellData : Dictionary<ForecastDay, DailySwellData>
     {
         public SwellData(){}
 

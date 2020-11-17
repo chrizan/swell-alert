@@ -28,44 +28,53 @@ namespace SwellAlert.Data
             SwellData swellData = new SwellData();
             for (int day = 1; day <= AvailableForecastDays; day++)
             {
-                swellData.Add(day, GetDailySwellData(day, htmlDoc));
+                swellData.Add((ForecastDay)day, GetDailySwellData(day, htmlDoc));
             }
             return swellData;
         }
 
         private DailySwellData GetDailySwellData(int day, HtmlDocument htmlDoc)
         {
-            DailySwellData dailySwellData = new DailySwellData
-            {
-                Day = day
-            };
-
             var dayNodes = htmlDoc.DocumentNode.Descendants("tr").Where(tr => tr.GetAttributeValue("data-forecast-day", "-1") == day.ToString());
 
-            foreach (var dayNode in dayNodes)
+            DailySwellData dailySwellData = new DailySwellData()
             {
-                var listNodes = dayNode.Descendants("li");
+                Date = dayNodes.FirstOrDefault().GetAttributeValue("data-date-anchor", "Date not found")
+            };
 
-                foreach (var listNode in listNodes)
+            for (int dayNode = 1; dayNode <= dayNodes.Count(); dayNode++)
+            {
+                dailySwellData.Add((ForecastHour)dayNode, GetHourlySwellData(dayNodes.ElementAt(dayNode - 1)));
+            }
+
+            return dailySwellData;
+        }
+
+        private HourlySwellData GetHourlySwellData(HtmlNode dayNode)
+        {
+            HourlySwellData hourlySwellData = new HourlySwellData();
+            
+            var listNodes = dayNode.Descendants("li");
+
+            foreach (var listNode in listNodes)
+            {
+                string starClass = listNode.GetAttributeValue("class", string.Empty);
+                switch (starClass)
                 {
-                    string starClass = listNode.GetAttributeValue("class", string.Empty);
-                    switch (starClass)
-                    {
-                        case "active ":
-                            dailySwellData.Full += 1;
-                            break;
-                        case "inactive ":
-                            dailySwellData.Semi += 1;
-                            break;
-                        case "placeholder":
-                            dailySwellData.None += 1;
-                            break;
-                        default:
-                            break;
-                    }
+                    case "active ":
+                        hourlySwellData.Full += 1;
+                        break;
+                    case "inactive ":
+                        hourlySwellData.Semi += 1;
+                        break;
+                    case "placeholder":
+                        hourlySwellData.None += 1;
+                        break;
+                    default:
+                        break;
                 }
             }
-            return dailySwellData;
+            return hourlySwellData;
         }
     }
 }

@@ -1,11 +1,16 @@
-﻿namespace SwellAlert.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+
+namespace SwellAlert.Models
 {
-    public class DailySwellData
+    [Serializable]
+    public sealed class DailySwellData : Dictionary<ForecastHour, HourlySwellData>
     {
+        public DailySwellData() { }
+
+        private DailySwellData(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
         public string Date { get; set; }
-        public int Day { get; set; }
-        public int Full { get; set; }
-        public int Semi { get; set; }
-        public int None { get; set; }
     }
 }
