@@ -2,8 +2,8 @@
 {
     public class HourlySwellData
     {
-        public int Full { get; set; }
-        public int Semi { get; set; }
-        public int None { get; set; }
+        public int FullStars { get; set; }
+        public int BlurredStars { get; set; }
+        public int EmptyStars { get; set; }
     }
 }

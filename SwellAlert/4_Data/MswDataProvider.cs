@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using SwellAlert.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,8 +8,6 @@ namespace SwellAlert.Data
 {
     public class MswDataProvider : IDataProvider
     {
-        private const int AvailableForecastDays = 7;
-
         public SwellData GetSwellDataFromFile(string filePath)
         {
             HtmlDocument htmlDoc = new HtmlDocument();
@@ -26,17 +25,23 @@ namespace SwellAlert.Data
         private SwellData GetSwellData(HtmlDocument htmlDoc)
         {
             SwellData swellData = new SwellData();
-            for (int day = 1; day <= AvailableForecastDays; day++)
+
+            int forecastDay = 1;
+            IEnumerable<HtmlNode> dayNodes = htmlDoc.DocumentNode.Descendants("tr").Where(tr => tr.GetAttributeValue("data-forecast-day", "-1") == forecastDay.ToString());
+            
+            do
             {
-                swellData.Add((ForecastDay)day, GetDailySwellData(day, htmlDoc));
-            }
+                swellData.Add(forecastDay, GetDailySwellData(dayNodes));
+                forecastDay++;
+                dayNodes = htmlDoc.DocumentNode.Descendants("tr").Where(tr => tr.GetAttributeValue("data-forecast-day", "-1") == forecastDay.ToString());
+
+            } while (dayNodes.Count() != 0);
+            
             return swellData;
         }
 
-        private DailySwellData GetDailySwellData(int day, HtmlDocument htmlDoc)
+        private DailySwellData GetDailySwellData(IEnumerable<HtmlNode> dayNodes)
         {
-            var dayNodes = htmlDoc.DocumentNode.Descendants("tr").Where(tr => tr.GetAttributeValue("data-forecast-day", "-1") == day.ToString());
-
             DailySwellData dailySwellData = new DailySwellData()
             {
                 Date = dayNodes.FirstOrDefault().GetAttributeValue("data-date-anchor", "Date not found")
@@ -46,7 +51,6 @@ namespace SwellAlert.Data
             {
                 dailySwellData.Add((ForecastHour)dayNode, GetHourlySwellData(dayNodes.ElementAt(dayNode - 1)));
             }
-
             return dailySwellData;
         }
 
@@ -62,13 +66,13 @@ namespace SwellAlert.Data
                 switch (starClass)
                 {
                     case "active ":
-                        hourlySwellData.Full += 1;
+                        hourlySwellData.FullStars += 1;
                         break;
                     case "inactive ":
-                        hourlySwellData.Semi += 1;
+                        hourlySwellData.BlurredStars += 1;
                         break;
                     case "placeholder":
-                        hourlySwellData.None += 1;
+                        hourlySwellData.EmptyStars += 1;
                         break;
                     default:
                         break;
