@@ -10,7 +10,7 @@ namespace SwellAlert.Test.Data
         private const string MswVieuxBoucauForecast = @"TestFiles\MswVieuxBoucau.html";
 
         [Fact]
-        public void Test_GetSwellDataFromFile()
+        public void Test_GetSwellDataFromFile_VieuxBoucau()
         {
             // Arrange
             IDataProvider mswDataProvider = new MswDataProvider();
@@ -43,54 +43,55 @@ namespace SwellAlert.Test.Data
                 switch (day)
                 {
                     case 1:
-                        dailySwellData.Date.Should().BeEquivalentTo("Tuesday1011");
+                        dailySwellData.Date.Should().BeEquivalentTo("Thursday1911");
                         switch (forecastHour)
                         {
                             case (int)ForecastHour.Hour_12am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_3am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_6am:
-                                hourlySwellData.FullStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(4);
                                 hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_9am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(2);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_Noon:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(2);
+                                hourlySwellData.BlurredStars.Should().Be(2);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
+
                             case (int)ForecastHour.Hour_3pm:
-                                hourlySwellData.FullStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(3);
                                 hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_6pm:
-                                hourlySwellData.FullStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(3);
                                 hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_9pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             default:
@@ -99,54 +100,55 @@ namespace SwellAlert.Test.Data
                         break;
 
                     case 2:
-                        dailySwellData.Date.Should().BeEquivalentTo("");
+                        dailySwellData.Date.Should().BeEquivalentTo("Friday2011");
                         switch (forecastHour)
                         {
                             case (int)ForecastHour.Hour_12am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_3am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_6am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_9am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_Noon:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
+
                             case (int)ForecastHour.Hour_3pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_6pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_9pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             default:
@@ -155,54 +157,55 @@ namespace SwellAlert.Test.Data
                         break;
 
                     case 3:
-                        dailySwellData.Date.Should().BeEquivalentTo("");
+                        dailySwellData.Date.Should().BeEquivalentTo("Saturday2111");
                         switch (forecastHour)
                         {
                             case (int)ForecastHour.Hour_12am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(2);
+                                hourlySwellData.BlurredStars.Should().Be(0);
                                 hourlySwellData.EmptyStars.Should().Be(3);
                                 break;
 
                             case (int)ForecastHour.Hour_3am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(2);
+                                hourlySwellData.BlurredStars.Should().Be(0);
                                 hourlySwellData.EmptyStars.Should().Be(3);
                                 break;
 
                             case (int)ForecastHour.Hour_6am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(2);
+                                hourlySwellData.BlurredStars.Should().Be(0);
                                 hourlySwellData.EmptyStars.Should().Be(3);
                                 break;
 
                             case (int)ForecastHour.Hour_9am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_Noon:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
+
                             case (int)ForecastHour.Hour_3pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_6pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_9pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             default:
@@ -211,54 +214,55 @@ namespace SwellAlert.Test.Data
                         break;
 
                     case 4:
-                        dailySwellData.Date.Should().BeEquivalentTo("");
+                        dailySwellData.Date.Should().BeEquivalentTo("Sunday2211");
                         switch (forecastHour)
                         {
                             case (int)ForecastHour.Hour_12am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_3am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_6am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_9am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_Noon:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
+
                             case (int)ForecastHour.Hour_3pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_6pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(5);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             case (int)ForecastHour.Hour_9pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             default:
@@ -267,54 +271,55 @@ namespace SwellAlert.Test.Data
                         break;
 
                     case 5:
-                        dailySwellData.Date.Should().BeEquivalentTo("");
+                        dailySwellData.Date.Should().BeEquivalentTo("Monday2311");
                         switch (forecastHour)
                         {
                             case (int)ForecastHour.Hour_12am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_3am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(2);
+                                hourlySwellData.BlurredStars.Should().Be(2);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_6am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(2);
+                                hourlySwellData.BlurredStars.Should().Be(2);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_9am:
-                                hourlySwellData.FullStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(2);
                                 hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_Noon:
                                 hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(2);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
+
                             case (int)ForecastHour.Hour_3pm:
-                                hourlySwellData.FullStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(2);
                                 hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_6pm:
-                                hourlySwellData.FullStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(2);
                                 hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_9pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             default:
@@ -323,47 +328,48 @@ namespace SwellAlert.Test.Data
                         break;
 
                     case 6:
-                        dailySwellData.Date.Should().BeEquivalentTo("");
+                        dailySwellData.Date.Should().BeEquivalentTo("Tuesday2411");
                         switch (forecastHour)
                         {
                             case (int)ForecastHour.Hour_12am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_3am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_6am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_9am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_Noon:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(2);
+                                hourlySwellData.BlurredStars.Should().Be(0);
                                 hourlySwellData.EmptyStars.Should().Be(3);
                                 break;
+
                             case (int)ForecastHour.Hour_3pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(0);
+                                hourlySwellData.BlurredStars.Should().Be(2);
                                 hourlySwellData.EmptyStars.Should().Be(3);
                                 break;
 
                             case (int)ForecastHour.Hour_6pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
+                                hourlySwellData.FullStars.Should().Be(0);
+                                hourlySwellData.BlurredStars.Should().Be(2);
                                 hourlySwellData.EmptyStars.Should().Be(3);
                                 break;
 
@@ -379,54 +385,55 @@ namespace SwellAlert.Test.Data
                         break;
 
                     case 7:
-                        dailySwellData.Date.Should().BeEquivalentTo("");
+                        dailySwellData.Date.Should().BeEquivalentTo("Wednesday2511");
                         switch (forecastHour)
                         {
                             case (int)ForecastHour.Hour_12am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(2);
                                 break;
 
                             case (int)ForecastHour.Hour_3am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(4);
+                                hourlySwellData.BlurredStars.Should().Be(0);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_6am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(0);
+                                hourlySwellData.BlurredStars.Should().Be(4);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_9am:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(0);
+                                hourlySwellData.BlurredStars.Should().Be(4);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_Noon:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(0);
+                                hourlySwellData.BlurredStars.Should().Be(4);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
+
                             case (int)ForecastHour.Hour_3pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(0);
+                                hourlySwellData.BlurredStars.Should().Be(4);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_6pm:
-                                hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.FullStars.Should().Be(2);
+                                hourlySwellData.BlurredStars.Should().Be(2);
+                                hourlySwellData.EmptyStars.Should().Be(1);
                                 break;
 
                             case (int)ForecastHour.Hour_9pm:
                                 hourlySwellData.FullStars.Should().Be(1);
-                                hourlySwellData.BlurredStars.Should().Be(1);
-                                hourlySwellData.EmptyStars.Should().Be(3);
+                                hourlySwellData.BlurredStars.Should().Be(4);
+                                hourlySwellData.EmptyStars.Should().Be(0);
                                 break;
 
                             default:
