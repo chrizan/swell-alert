@@ -1,4 +1,6 @@
-﻿using SwellAlert.Views;
+﻿using SwellAlert.Data;
+using SwellAlert.Models;
+using SwellAlert.Views;
 using Xamarin.Forms;
 
 namespace SwellAlert
@@ -8,8 +10,8 @@ namespace SwellAlert
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            IDataProvider dataProvider = new MswDataProvider();
+            MainPage = new MainPage(dataProvider);
         }
 
         protected override void OnStart()

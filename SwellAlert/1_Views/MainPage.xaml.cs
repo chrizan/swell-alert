@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using SwellAlert.Models;
+using SwellAlert.ViewModels;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace SwellAlert.Views
@@ -8,9 +10,10 @@ namespace SwellAlert.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(IDataProvider dataProvider)
         {
             InitializeComponent();
+            BindingContext = new MainPageViewModel(dataProvider);
         }
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SwellAlert.Data
 {
+    /// <summary>
+    /// Magic seaweed screen scraping implementation of IDataProvider 
+    /// </summary>
     public class MswDataProvider : IDataProvider
     {
         public SwellData GetSwellDataFromFile(string filePath)
