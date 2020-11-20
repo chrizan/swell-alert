@@ -4,11 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SwellAlert.MainPage">
+             x:Class="SwellAlert.Views.MainPage">
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="Welcome 2 Swell Alert!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
     </StackLayout>
