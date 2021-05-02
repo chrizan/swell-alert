@@ -1,11 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SwellAlert.Views.MainPage"
-             Title="{Binding Title}">
+<ContentPage
+    x:Class="SwellAlert.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome 2 Swell Alert!" />
+    <StackLayout x:Name="stackLayout" Margin="0,35,0,0">
+        <Label
+            HorizontalOptions="Center"
+            Text="Click the button below to create a local notification."
+            TextColor="Red"
+            VerticalOptions="Start" />
+        <Button
+            Clicked="OnSendClick"
+            HorizontalOptions="Center"
+            Text="Create Notification"
+            VerticalOptions="Start" />
+        <Label
+            HorizontalOptions="Center"
+            Text="Click the button below to schedule a local notification for in 10 seconds time."
+            TextColor="Red"
+            VerticalOptions="Start" />
+        <Button
+            Clicked="OnScheduleClick"
+            HorizontalOptions="Center"
+            Text="Create Notification"
+            VerticalOptions="Start" />
     </StackLayout>
 
 </ContentPage>

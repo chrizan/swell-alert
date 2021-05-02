@@ -1,22 +1,19 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using AndroidX.Core.App;
 using AndroidX.Work;
 using Prism;
 using Prism.Ioc;
 using System;
+using Xamarin.Forms;
 
 namespace SwellAlert.Droid
 {
     [Activity(Theme = "@style/MainTheme",
-              ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+              ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        static readonly int NOTIFICATION_ID = 1000;
-        static readonly string CHANNEL_ID = "location_notification";
-        internal static readonly string COUNT_KEY = "count";
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -24,10 +21,9 @@ namespace SwellAlert.Droid
 
             base.OnCreate(savedInstanceState);
 
-            CreateNotificationChannel();
-
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));
+            CreateNotificationFromIntent(Intent);
 
             PeriodicWorkRequest testWorkRequest = PeriodicWorkRequest.Builder.From<TestWorker>(TimeSpan.FromMinutes(16)).Build();
 
@@ -41,25 +37,19 @@ namespace SwellAlert.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        void CreateNotificationChannel()
+        protected override void OnNewIntent(Intent intent)
         {
-            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+            CreateNotificationFromIntent(intent);
+        }
+
+        void CreateNotificationFromIntent(Intent intent)
+        {
+            if (intent?.Extras != null)
             {
-                // Notification channels are new in API 26 (and not a part of the
-                // support library). There is no need to create a notification
-                // channel on older versions of Android.
-                return;
+                string title = intent.GetStringExtra(AndroidNotificationManager.TitleKey);
+                string message = intent.GetStringExtra(AndroidNotificationManager.MessageKey);
+                DependencyService.Get<INotificationManager>().ReceiveNotification(title, message);
             }
-
-            var name = "channel_name"; //Resources.GetString(Resource.String.channel_name);
-            var description = "channel_description"; //GetString(Resource.String.channel_description);
-            var channel = new NotificationChannel(CHANNEL_ID, name, NotificationImportance.Default)
-            {
-                Description = description
-            };
-
-            var notificationManager = (NotificationManager)GetSystemService(NotificationService);
-            notificationManager.CreateNotificationChannel(channel);
         }
     }
 
